@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder.Internal;
 using Microsoft.AspNetCore.Mvc.Internal;
 using Microsoft.AspNetCore.Routing;
 
@@ -8,21 +9,16 @@ namespace Orchard.Hosting.Mvc.Routing
 {
     public class DefaultShellRouteBuilder : IRouteBuilder
     {
-        public DefaultShellRouteBuilder(IApplicationBuilder applicationBuilder)
-            : this(applicationBuilder, defaultHandler: new MvcRouteHandler())
+        public DefaultShellRouteBuilder(IServiceProvider serviceProvider)
         {
-        }
+            //if (applicationBuilder == null)
+            //{
+            //    throw new ArgumentNullException(nameof(applicationBuilder));
+            //}
 
-        public DefaultShellRouteBuilder(IApplicationBuilder applicationBuilder, IRouter defaultHandler)
-        {
-            if (applicationBuilder == null)
-            {
-                throw new ArgumentNullException(nameof(applicationBuilder));
-            }
-
-            ApplicationBuilder = applicationBuilder;
-            DefaultHandler = defaultHandler;
-            ServiceProvider = applicationBuilder.ApplicationServices;
+            ApplicationBuilder = new ApplicationBuilder(serviceProvider);
+            DefaultHandler = new MvcRouteHandler();
+            ServiceProvider = serviceProvider;
             Routes = new List<IRouter>();
         }
 

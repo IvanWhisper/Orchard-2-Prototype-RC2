@@ -9,8 +9,8 @@ namespace Orchard.Console
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                .UseKestrel()
                 .UseDefaultHostingConfiguration(args)
+                .UseKestrel()
                 .UseStartup<Startup>()
                 .Build();
 
