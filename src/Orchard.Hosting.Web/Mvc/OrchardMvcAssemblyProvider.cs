@@ -30,11 +30,11 @@ namespace Orchard.Hosting.Mvc
             "Microsoft.AspNetCore.Mvc.DataAnnotations",
             "Microsoft.AspNetCore.Mvc.Formatters.Json",
             "Microsoft.AspNetCore.Mvc.Formatters.Xml",
+            "Microsoft.AspNetCore.Mvc.Localization",
             "Microsoft.AspNetCore.Mvc.Razor",
             "Microsoft.AspNetCore.Mvc.Razor.Host",
             "Microsoft.AspNetCore.Mvc.TagHelpers",
-            "Microsoft.AspNetCore.Mvc.ViewFeatures",
-            "Microsoft.AspNetCore.PageExecutionInstrumentation.Interfaces",
+            "Microsoft.AspNetCore.Mvc.ViewFeatures"
         };
 
         private readonly IOrchardLibraryManager _libraryManager;
